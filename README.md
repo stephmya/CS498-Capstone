@@ -54,28 +54,100 @@ running only object detection:
 ``` python train_yolo.py```
 
 ---------------------------------------------------------------------------------
+### File Structure:
+```
+├───dataset
+│   ├───classification
+│   │   ├───images
+│   │   │   ├───train
+│   │   │   └───val
+│   │   └───labels
+│   │       ├───train
+│   │       └───val
+│   └───detection
+│       ├───images
+│       │   ├───train
+│       │   └───val
+│       └───labels
+│           ├───train
+│           └───val
+├───processing_data
+│   ├───annotations
+│   ├───processed_images
+│   └───raw_images
+├───runs
+│   └───detect
+│       └───runs
+│           └───detect
+│               ├───bollard_detect
+│               │   └───weights
+│               ├───bollard_detect2
+│               │   └───weights
+│               ├───bollard_detect3
+│               │   └───weights
+│               ├───bollard_detect4
+│               │   └───weights
+│               └───bollard_detect5
+│                   └───weights
+├───scripts // utility scripts for normalizing data prior to labeling
+│   └─── resize_images
+│   └─── title_images
+├─── data.yaml // yaml file for training YOLOv8
+└─── train_yolo.py // script for training YOLOv8 on the dataset
+```
+---------------------------------------------------------------------------------
 ## Data Summary:
 ### Bollards:
 | Country     | Variants | Images per Variant | Total Images |
 |-------------|----------|--------------------|--------------|
-| Monaco      | 2        |                    |              |
-| Vietnam     | 2        |                    |              |
-| Singapore   | 3        |                    |              |
-| Serbia      | 3        |                    |              |
-| Thailand    | 6        |                    |              |
-| India       | 7        |                    |              |
-| Laos        | 4        |                    |              |
-| Philippines | 2        |                    |              |
+| Monaco      | 2        |  100x2             |      200     |
+| Vietnam     | 2        |  100x2             |      200     |
+| Singapore   | 3        |  100x2             |      300     |
+| Serbia      | 3        |  100x3             |      300     |
+| Thailand    | 6        |  100x6             |      600     |
+| India       | 7        |  100x7             |      700     |
+| Laos        | 4        |  100x4             |      400     |
+| Philippines | 2        |  100x2             |      200     |
+
+### Sidewalks:
+| Country     | Variants | Images per Variant | Total Images |
+|-------------|----------|--------------------|--------------|
+| Monaco      | 0        |                    |       0      |
+| Vietnam     | 1        |  100               |      100     |
+| Singapore   | 1        |  100               |      100     |
+| Serbia      | 0        |                    |       0      |
+| Thailand    | 3        |  100x3             |      300     |
+| India       | 3        |  100x3             |      300     |
+| Laos        | 3        |  100x3             |      300     |
+| Philippines | 1        |  100               |      100     |
+
+### Post Boxes:
+| Country     | Variants | Images per Variant | Total Images |
+|-------------|----------|--------------------|--------------|
+| Monaco      | 3        |  100x3             |     300      |
+| Vietnam     | 4        |  100x4             |     400      |
+| Singapore   | 3        |  100x3             |     300      |
+| Serbia      | 7        |  100x7             |     700      |
+| Thailand    | 2        |  100x2             |     200      |
+| India       | 6        |  100x6             |     600      |
+| Laos        | 2        |  100x2             |     200      |
+| Philippines | 1        |  100               |     100      |
+
+
 
 ---------------------------------------------------------------------------------
-Distinct Object classifications are validated against:
-https://geohints.com/, https://geohints.com/meta/bollards,
-which is a community database for GeoGuessr "meta" or country-specific identifying information. 
+### Distinct Object classifications are validated against:
+https://geohints.com/, 
+https://geohints.com/meta/bollards, 
+https://geohints.com/meta/sidewalks, 
+https://geohints.com/meta/postBoxes
+
+Geohints is a community database for GeoGuessr "meta" or country-specific identifying information. 
 
 Data for this project is independently collected.
 
 
-References: 
+### Additional references:
 
 
 
