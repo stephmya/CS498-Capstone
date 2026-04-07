@@ -2,8 +2,12 @@
 Create Conda Environment:
 Using Python 3.9 because labelImg is not compatible with python 3.11
 
-```conda create -n geoCV python=3.9 -y```
-```conda activate geoCV```
+```
+conda create -n geoCV python=3.9 -y
+```
+```
+conda activate geoCV
+```
 
 Install:
 ultralytics
@@ -12,13 +16,16 @@ opencv-python
 neo4j
 scikit-learn
 numpy
-```pip install ultralytics timm opencv-python neo4j scikit-learn numpy```
-```pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126```
+```
+pip install ultralytics timm opencv-python neo4j scikit-learn numpy
+```
+```
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+```
 
 can also install: ```pip3 install torch torchvision```
 for mac/no NVIDIA card.
-This works best with cuda enabled gpu.
-
+This works best with cuda enabled gpu, no guarantees on cpu only.
 
 ### Verifying PyTorch
 To verify Pytorch works correctly:
@@ -48,12 +55,11 @@ Default installation:
 pip3 install torch torchvision
 ```
 --------------------------------------------------------------------------------
-## Running this thing:
+### The Pipeline! 
 
-running only object detection:
-``` python train_yolo.py```
+1. Detection using YOLOv8 from ultralytics
+2. Classification using EfficientNet from timm
 
----------------------------------------------------------------------------------
 ### File Structure:
 ```
 ├───dataset
@@ -72,23 +78,11 @@ running only object detection:
 │           ├───train
 │           └───val
 ├───processing_data
-│   ├───annotations
-│   ├───processed_images
-│   └───raw_images
-├───runs
-│   └───detect
-│       └───runs
-│           └───detect
-│               ├───bollard_detect
-│               │   └───weights
-│               ├───bollard_detect2
-│               │   └───weights
-│               ├───bollard_detect3
-│               │   └───weights
-│               ├───bollard_detect4
-│               │   └───weights
-│               └───bollard_detect5
-│                   └───weights
+│   ├───annotations // annotations from labelImg
+│   ├───processed_images // folders storing resized TITLED images
+│   └───raw_images // folders storing raw TITLED images
+├───runs // run data
+│   
 ├───scripts // utility scripts for normalizing data prior to labeling
 │   └─── resize_images
 │   └─── title_images
