@@ -1,0 +1,13 @@
+<form method="POST" enctype="multipart/form-data">
+  <input type="file" name="image">
+  <button type="submit">Upload</button>
+</form>
+
+{% if detections %}
+  <img src="{{ image }}" width="400">
+  <ul>
+    {% for d in detections %}
+      <li>{{ d.object }} - {{ d.country }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
