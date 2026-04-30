@@ -33,7 +33,7 @@ Default installation:
 
 ```
 pip3 install torch torchvision
-
+```
 ---------------------------------------------------------------------------------
 ### The Pipeline! 
 
@@ -41,17 +41,26 @@ pip3 install torch torchvision
 2. Classification using EfficientNet from timm
 
 ## Image Preprocessing:
-1. resize screenshots with ```python src/resize_images.py```
-2. Rename screenshots with ```python src/title_images.py``` by folder to add country, object type, varinant, and index. 
+1. resize screenshots with 
+```python src/resize_images.py```
+2. Rename screenshots with 
+```python src/title_images.py``` 
+by folder to add country, object type, varinant, and index. 
 3. Use labelImg to label
-4. Distribute into train/val folders
+4. Distribute into train/val folders manually
 
 
 ### processing pipeline:
-1. Run the YOLOv8 training script to train the object detector on the dataset:```python src/train_yolo.py``` 
-2. Run the cropping script to crop the original images into individual objects for classification, using the bounding boxes from the YOLOv8 annotations:```python src/parse_labels.py```
-3. Run the cropping script to crop the original images into individual objects for classification, using the bounding boxes from the YOLOv8 annotations:```python src/crop_dataset.py```
-4. Run the classification training script to train the EfficientNet classifier on the cropped images:
+1. Run the YOLOv8 training script to train the object detector on the dataset:
+```python src/train_yolo.py``` 
+2. Run the cropping script to crop the original images into individual 
+objects for classification, using the bounding boxes from the YOLOv8 annotations:
+```python src/parse_labels.py```
+3. Run the cropping script to crop the original images into individual 
+objects for classification, using the bounding boxes from the YOLOv8 annotations:
+```python src/crop_dataset.py```
+4. Run the classification training script to train the EfficientNet 
+classifier on the cropped images:
 ```python src/train_classifier.py```
 
 5. then you can run the interactive web app to test the model on new images:
